@@ -20,3 +20,8 @@
 .main__title > p {
   max-width: 50rem;
 }
+
+.table {
+  margin: 0 auto;
+  width: 95%;
+}
