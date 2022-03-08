@@ -60,7 +60,7 @@ app.post("/users", (req, res) => {
 app.get("/users", (req, res) => {
   Users.find()
     .then((users) => {
-      res.status(201).json(users);
+      res.status(200).json(users);
     })
     .catch((err) => {
       console.error(err);
@@ -68,7 +68,6 @@ app.get("/users", (req, res) => {
     });
 });
 
-// Get a user by username
 app.get("/users/:Username", (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
@@ -106,7 +105,7 @@ app.put("/users/:Username", (req, res) => {
     (err, updatedUser) => {
       if (err) {
         console.error(err);
-        res.status(500).send("Error: " + err);
+        res.status(500).send(" Error: " + err);
       } else {
         res.json(updatedUser);
       }
@@ -121,14 +120,10 @@ app.post("/users/:Username/movies/:MovieID", (req, res) => {
     {
       $push: { FavoriteMovies: req.params.MovieID },
     },
-    { new: true }, // This line makes sure that the updated document is returned
+    { new: true },
     (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Error: " + err);
-      } else {
-        res.json(updatedUser);
-      }
+      if (err) throw err;
+      res.json(updatedUser);
     }
   );
 });
@@ -171,7 +166,7 @@ app.get("/genre/:Name", (req, res) => {
 app.get("/movies", (req, res) => {
   Movies.find()
     .then((movies) => {
-      res.status(201).json(movies);
+      res.status(200).json(movies);
     })
     .catch((err) => {
       console.error(err);
