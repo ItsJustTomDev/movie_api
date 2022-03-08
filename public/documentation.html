@@ -35,45 +35,29 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Add a user</th>
+              <th scope="row">Get a list of all users</th>
               <td>/users</td>
-              <td>POST</td>
+              <td>GET</td>
+              <td>None</td>
               <td>
-                A JSON object holding data about a user to add, structured
-                like:<br />
-                { <br />
-                "name": "Kim"<br />
-                }
-              </td>
-              <td>
-                A JSON object holding data about user that was added, including
-                an ID:<br />
-                { <br />
-                id: 1,<br />
-                name: "Jeff",<br />
-                favoriteMovies: []<br />
-
-                }
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Find user by ID and update user name</th>
-              <td>/users/:id</td>
-              <td>PUT</td>
-              <td>
-                A JSON object holding data about a user to change name,
-                structured like:<br />
-                { <br />
-                "name": "Joe"<br />
-                }
-              </td>
-              <td>
-                A JSON object holding data about a user's changed name:<br />
-                { <br />
-                id: 1,<br />
-                name: "Joe",<br />
-                favoriteMovies: []<br />
-
+                A JSON object holding data about all users, structured like:<br />
+                {<br />
+                {<br />
+                "_id": "61fa66e89526ff993d4b0ab7",<br />
+                "Username": "TomDev",<br />
+                "Password": "password1234",<br />
+                "Email": "TomDev@yahoo.com",<br />
+                "Birthday": "1955-02-06T00:00:00.000Z",<br />
+                "FavoriteMovies": []<br />
+                },<br />
+                {<br />
+                "_id": "61fa66f09526ff993d4b0ab8",<br />
+                "Username": "John Doe",<br />
+                "Password": "SecurePAssowrd",<br />
+                "Email": "Jondoe@yahoo.com",<br />
+                "Birthday": "1977-05-12T00:00:00.000Z",<br />
+                "FavoriteMovies": []<br />
+                }<br />
                 }
               </td>
             </tr>
