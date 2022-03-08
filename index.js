@@ -103,12 +103,8 @@ app.put("/users/:Username", (req, res) => {
     },
     { new: true }, // This line makes sure that the updated document is returned
     (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send(" Error: " + err);
-      } else {
-        res.json(updatedUser);
-      }
+      if (err) throw err;
+      res.json(updatedUser);
     }
   );
 });
