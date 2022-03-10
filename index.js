@@ -6,6 +6,7 @@ const express = require("express"),
   app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const Models = require("./models.js");
 const Movies = Models.Movie;
@@ -15,6 +16,10 @@ mongoose.connect("mongodb://localhost:27017/test", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+let auth = require("./auth")(app);
+const passport = require("passport");
+require("./passport");
 
 app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
@@ -159,16 +164,20 @@ app.get("/genre/:Name", (req, res) => {
     });
 });
 
-app.get("/movies", (req, res) => {
-  Movies.find()
-    .then((movies) => {
-      res.status(200).json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Movies.find()
+      .then((movies) => {
+        res.status(201).json(movies);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  }
+);
 
 // Delete a user by username
 app.delete("/users/:Username", (req, res) => {
