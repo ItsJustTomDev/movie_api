@@ -1,12 +1,15 @@
+/* This is importing the passport library, the LocalStrategy, the models, and the passport-jwt library. */
 const passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy,
   Models = require("./models.js"),
   passportJWT = require("passport-jwt");
 
+/* This is importing the models.js file and the passport-jwt library. */
 let Users = Models.User,
   JWTStrategy = passportJWT.Strategy,
   ExtractJWT = passportJWT.ExtractJwt;
 
+/* This is the LocalStrategy. This is the strategy that is used to authenticate the user. */
 passport.use(
   new LocalStrategy(
     {
@@ -23,9 +26,12 @@ passport.use(
 
         if (!user) {
           console.log("incorrect username");
-          return callback(null, false, {
-            message: "Incorrect username or password.",
-          });
+          return callback(null, false, { message: "Incorrect username." });
+        }
+
+        if (!user.validatePassword(password)) {
+          console.log("incorrect password");
+          return callback(null, false, { message: "Incorrect password." });
         }
 
         console.log("finished");
@@ -35,6 +41,7 @@ passport.use(
   )
 );
 
+/* This is the JWTStrategy. This is the strategy that is used to authenticate the user. */
 passport.use(
   new JWTStrategy(
     {
