@@ -36,7 +36,7 @@ const Users = Models.User;
 
 /* This is connecting to the database. */
 mongoose.connect(
-  "mongodb+srv://TomDev:Tomwashier1*@cluster0.bgkxr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "mongodb+srv://TomDev:Tomwashier1*>@cluster0.bgkxr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
