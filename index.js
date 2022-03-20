@@ -35,10 +35,13 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 /* This is connecting to the database. */
-mongoose.connect("mongodb://localhost:27017/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://TomDev:Tomwashier1*@cluster0.bgkxr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 /* This is creating an instance of the passport framework and assigning it to the variable `passport`. */
 let auth = require("./auth")(app);
