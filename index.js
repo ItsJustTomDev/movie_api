@@ -265,7 +265,4 @@ app.delete(
 
 /* We are using the `listen` method to start the server. We are passing in the port
 number and a callback function. */
-const port = process.env.PORT || 8080;
-app.listen(port, "0.0.0.0", () => {
-  console.log("Listening on Port " + port);
-});
+app.listen(8080, () => console.log("App is listening on port 8080"));
