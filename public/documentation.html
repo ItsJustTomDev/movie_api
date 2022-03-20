@@ -22,6 +22,104 @@
           movies, directors, and genres. Users will be able to sign up, update
           personal info and create a list of favorite movies.
         </p>
+
+        <table class="table table-bordered table-responsive">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Business Logic</th>
+              <th scope="col">URL</th>
+              <th scope="col">HTTP Method</th>
+              <th scope="col">Request body data format</th>
+              <th scope="col">Response body data format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Get a list of all users</th>
+              <td>/users</td>
+              <td>GET</td>
+              <td>None</td>
+              <td>
+                A JSON object holding data about all users, structured like:<br />
+                {<br />
+                {<br />
+                "_id": "61fa66e89526ff993d4b0ab7",<br />
+                "Username": "TomDev",<br />
+                "Password": "password1234",<br />
+                "Email": "TomDev@yahoo.com",<br />
+                "Birthday": "1955-02-06T00:00:00.000Z",<br />
+                "FavoriteMovies": []<br />
+                },<br />
+                {<br />
+                "_id": "61fa66f09526ff993d4b0ab8",<br />
+                "Username": "John Doe",<br />
+                "Password": "SecurePAssowrd",<br />
+                "Email": "Jondoe@yahoo.com",<br />
+                "Birthday": "1977-05-12T00:00:00.000Z",<br />
+                "FavoriteMovies": []<br />
+                }<br />
+                }
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Remove a user by ID</th>
+              <td>/users/:id</td>
+              <td>DELETE</td>
+              <td>none</td>
+              <td>
+                A message indicating whether the user was successfully removed
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Add a movie to user's favorite movies array</th>
+              <td>/users/:id/:movieTitle</td>
+              <td>POST</td>
+              <td>none</td>
+              <td>
+                A message indicating whether the movie was successfully added
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Remove a movie from user's favorite movies array
+              </th>
+              <td>/users/:id/:movieTitle</td>
+              <td>DELETE</td>
+              <td>none</td>
+              <td>
+                A message indicating whether the movie was successfully removed
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Get a list of all movies</th>
+              <td>/movies</td>
+              <td>GET</td>
+              <td>none</td>
+              <td>A JSON object holding data about all the movies</td>
+            </tr>
+            <tr>
+              <th scope="row">Get data about a single movie by title</th>
+              <td>/movies/:title</td>
+              <td>GET</td>
+              <td>none</td>
+              <td>A JSON object holding data about the movie</td>
+            </tr>
+            <tr>
+              <th scope="row">Get data about a genre</th>
+              <td>/movies/genre/:genreName</td>
+              <td>GET</td>
+              <td>none</td>
+              <td>A JSON object holding data about the genre</td>
+            </tr>
+            <tr>
+              <th scope="row">Get data about a director</th>
+              <td>/movies/directors/:directorName</td>
+              <td>GET</td>
+              <td>none</td>
+              <td>A JSON object holding data about the director</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
