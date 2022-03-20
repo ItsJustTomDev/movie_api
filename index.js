@@ -35,13 +35,10 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 /* This is connecting to the database. */
-mongoose.connect(
-  "mongodb+srv://TomDev:Tomwashier1*>@cluster0.bgkxr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 /* This is creating an instance of the passport framework and assigning it to the variable `passport`. */
 let auth = require("./auth")(app);
@@ -268,4 +265,7 @@ app.delete(
 
 /* We are using the `listen` method to start the server. We are passing in the port
 number and a callback function. */
-app.listen(3000, () => console.log("App is listening on port 3000"));
+const port = process.env.PORT || 8080;
+app.listen(port, "0.0.0.0", () => {
+  console.log("Listening on Port " + port);
+});
