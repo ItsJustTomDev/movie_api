@@ -226,20 +226,16 @@ app.get(
 );
 
 /* This is returning all movies in the database. */
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movies) => {
-        res.status(200).json(movies);
-      })
-      .catch((error) => {
-        console.error(error);
-        res.status(500).send("Error: " + error);
-      });
-  }
-);
+app.get("/movies", (req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.status(200).json(movies);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
+});
 
 /* This is deleting a user by their username. If the user is found, we delete the user and return a
 status code of 200. If the user is not found, we return a status code of 400. If an error occurs, we
