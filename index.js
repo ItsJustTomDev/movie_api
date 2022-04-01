@@ -16,6 +16,7 @@ let allowedOrigins = [
   "http://localhost:8080",
   "http://testsite.com",
   "http://localhost:1234",
+  "https://62457f27fc9af500084ed3bd--harmonious-gecko-34803e.netlify.app",
 ];
 app.use(
   cors({
